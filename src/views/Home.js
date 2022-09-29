@@ -5,20 +5,22 @@ function Home() {
   const [value, setValue] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
+  const [results, setResult] = useState("");
   const apikey = "EG7V4K8KzYdbTmXpL23hcUBPYchUphC8";
-
-  console.log(value, from, to);
 
   const convertReq = () => {
     axios
-      .get(`https://api.apilayer.com/currency_data/convert?from=${from}&to=${to}&amount=${value}`,
-     { headers:{ 
-        'apikey' :apikey,
-      }
-    }
+      .get(
+        `https://api.apilayer.com/currency_data/convert?from=${from}&to=${to}&amount=${value}`,
+        {
+          headers: {
+            apikey: apikey,
+          },
+        }
       )
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
+        setResult(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -51,6 +53,10 @@ function Home() {
           Convert
         </button>
       </div>
+
+    <div className="container bg-light">
+      <p>{results.result}</p>
+    </div>
     </div>
   );
 }
