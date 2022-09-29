@@ -11,7 +11,12 @@ function Home() {
 
   const convertReq = () => {
     axios
-      .get("https://api.apilayer.com/currency_data/convert/")
+      .get(`https://api.apilayer.com/currency_data/convert?from=${from}&to=${to}&amount=${value}`,
+     { headers:{ 
+        'apikey' :apikey,
+      }
+    }
+      )
       .then((response) => {
         console.log(response);
       })
