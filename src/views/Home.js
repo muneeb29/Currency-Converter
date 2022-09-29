@@ -52,11 +52,13 @@ function Home() {
         <button onClick={convertReq} className="btn btn-secondary mx-2">
           Convert
         </button>
-      </div>
 
-    <div className="container bg-light">
-      <p>{results.result}</p>
-    </div>
+        <div className="py-4">
+          <span>
+            Result {results?.query?.to} = {results?.result}
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
