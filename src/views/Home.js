@@ -1,13 +1,24 @@
 import { useState } from "react";
+import axios from "axios";
 
 function Home() {
   const [value, setValue] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
+  const apikey = "EG7V4K8KzYdbTmXpL23hcUBPYchUphC8";
 
   console.log(value, from, to);
 
-  const convertReq = () => {};
+  const convertReq = () => {
+    axios
+      .get("https://api.apilayer.com/currency_data/convert/")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
