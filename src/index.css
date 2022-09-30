@@ -20,3 +20,20 @@ code {
   bottom: 0;
   position: fixed;
 }
+
+.contain {
+  width: 65%;
+
+}
+
+.quest {
+  z-index: 0;
+  position: relative;
+  cursor: pointer;
+  margin-right: 235px;
+  margin-top: -50px;
+ 
+
+}
+
+

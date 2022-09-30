@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import currency from "../images/currency.svg";
+import exchange from "../images/exchange.png";
+import question from "../images/question.svg";
 
 function Home() {
   const [value, setValue] = useState("");
@@ -9,10 +11,9 @@ function Home() {
   const [results, setResult] = useState("");
   const apikey = "EG7V4K8KzYdbTmXpL23hcUBPYchUphC8";
 
-  const toInputUppercase = e => {
+  const toInputUppercase = (e) => {
     e.target.value = ("" + e.target.value).toUpperCase();
   };
-  
 
   const convertReq = () => {
     axios
@@ -34,15 +35,15 @@ function Home() {
   };
 
   return (
-    <div className="container bg-white shadow text-center border border-1 py-3 my-3 rounded">
+    <div className="container contain bg-white shadow text-center border border-1 py-3 my-5 rounded">
       <div className="container">
-      <img
-              src={currency}
-              alt="currency"
-              width="50"
-              height="54"
-              className="d-inline-block align-text-top"
-            />
+        <img
+          src={currency}
+          alt="currency"
+          width="50"
+          height="54"
+          className="d-inline-block align-text-top"
+        />
         <h1>Convert Currency</h1>
         <div className="row">
           <div className="col-lg-5 mx-auto">
@@ -53,7 +54,7 @@ function Home() {
                 onChange={(e) => setValue(e.target.value)}
                 required
                 min="1"
-                placeholder="Enter Value"
+                placeholder="Enter Value: "
               />
             </div>
             <div className="form-floating mb-3">
@@ -64,9 +65,18 @@ function Home() {
                 required
                 minLength="3"
                 maxLength="3"
-                onInput={toInputUppercase} 
+                onInput={toInputUppercase}
                 placeholder="Enter From: "
               />
+            </div>
+
+            <div className="mx-auto my-2">
+              <button
+                onClick={convertReq}
+                className="btn btn-success border-1 "
+              >
+                <img src={exchange} alt="Convert" height="20" />
+              </button>
             </div>
 
             <div className="form-floating">
@@ -77,20 +87,23 @@ function Home() {
                 required
                 minLength="3"
                 maxLength="3"
-                onInput={toInputUppercase} 
+                onInput={toInputUppercase}
                 placeholder="Convert To: "
               />
             </div>
 
-            <div className="mx-auto my-2">
-              <button onClick={convertReq} className="btn btn-secondary ">
-                Convert
-              </button>
-            </div>
+            <img
+              src={question}
+              alt=""
+              height="20"
+              className="quest"
+              style={{ cursor: "pointer" }}
+              title="Enter Currency Code Such As GBP"
+            />
           </div>
           <div className="py-4">
             <span>
-            {from}  {value} = {results?.query?.to} {results?.result}
+              {from} {value} = {results?.query?.to} {results?.result}
             </span>
           </div>
         </div>
